@@ -1,0 +1,26 @@
+.mood-image {
+  width: 32px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.mood-angry {
+  background-color: lightcoral;
+}
+
+.mood-sad {
+  background-color: lightblue;
+}
+
+.mood-neutral {
+  background-color: lightgray;
+}
+
+.mood-happy {
+  background-color: lightgreen;
+}
+
+.mood-very-happy {
+  background-color: gold;
+}
