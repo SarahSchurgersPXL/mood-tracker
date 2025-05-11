@@ -205,6 +205,13 @@
   <a routerLink="/history" routerLinkActive="active">Mood History</a>
   <a routerLink="/stats" routerLinkActive="active">Stats</a>
   <a routerLink="/settings" routerLinkActive="active">Settings</a>
+  <span *ngIf="!isLoggedIn">
+    <a routerLink="/login" routerLinkActive="active">Login</a>
+  </span>
+
+  <span *ngIf="isLoggedIn">
+    <a href="#" (click)="logout($event)">Log out</a>
+  </span>
 </nav>
 
 <main>

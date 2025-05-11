@@ -17,9 +17,44 @@ export class MoodService {
 
   async logMood(mood: string): Promise<void> {
     const date = new Date().toISOString().split('T')[0];
-    await this.supabase
+    const { data, error } = await this.supabase
       .from('moods')
-      .upsert({ date, mood }, { onConflict: 'date' });
+      .select('*')
+      .eq('date', date)
+      .maybeSingle();
+
+    if (error) {
+      console.error('❌ Fout bij ophalen mood:', error.message);
+      return;
+    }
+
+    if (data) {
+      console.log('✅ Mood bestaat al:', data);
+
+      // Stap 2: mood bestaat → update
+      const { error: updateError } = await this.supabase
+        .from('moods')
+        .update({ mood })
+        .eq('date', date);
+
+      if (updateError) {
+        console.error('❌ Fout bij updaten mood:', updateError.message);
+      } else {
+        console.log('✅ Mood bijgewerkt');
+      }
+
+    } else {
+      // Stap 3: mood bestaat nog niet → insert
+      const { error: insertError } = await this.supabase
+        .from('moods')
+        .insert({ date, mood });
+
+      if (insertError) {
+        console.error('❌ Fout bij invoegen mood:', insertError.message);
+      } else {
+        console.log('✅ Mood toegevoegd');
+      }
+    }
   }
 
   async getMoods(): Promise<any[]> {
