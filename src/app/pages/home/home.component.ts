@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MoodService } from '../../services/mood.service';
 import Toastify from 'toastify-js';
+import { OfflineMoodSyncService } from '../../services/offline-mood-sync.service';
 
 @Component({
   selector: 'app-home',
@@ -17,10 +18,11 @@ import Toastify from 'toastify-js';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private moodService: MoodService) {}
+  constructor(private offlineSync: OfflineMoodSyncService) {}
 
   log(mood: string) {
-    this.moodService.logMood(mood);
+    const date = new Date().toISOString().split('T')[0];
+    this.offlineSync.saveMood(date ,mood);
 
     Toastify({
       text: `Mood logged: ${mood}`,
