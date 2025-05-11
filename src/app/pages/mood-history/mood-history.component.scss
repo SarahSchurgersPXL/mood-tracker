@@ -1,0 +1,37 @@
+:host {
+  display: block;
+  padding: 1rem;
+  font-family: "Inter", sans-serif;
+}
+
+.month-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.mood-overview {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 columns for a week */
+  gap: 1rem;
+}
+
+.day {
+  text-align: center;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.day span {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.mood-image {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto; /* Center the image */
+}
