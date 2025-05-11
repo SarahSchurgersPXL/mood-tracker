@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { MoodService } from '../../services/mood.service';
 
@@ -21,13 +21,14 @@ import { MoodService } from '../../services/mood.service';
   `,
   styleUrls: ['./mood-history.component.scss']
 })
-export class MoodHistoryComponent {
+export class MoodHistoryComponent implements OnInit {
   currentMonth: number = new Date().getMonth();
   currentYear: number = new Date().getFullYear();
   daysInMonth: { date: number; mood: string | null }[] = [];
 
-  constructor(private moodService: MoodService) {
-    this.updateDaysInMonth();
+  constructor(private moodService: MoodService) {  }
+  async ngOnInit(): Promise<void> {
+    await this.updateDaysInMonth();
   }
 
   get currentMonthName(): string {
@@ -46,13 +47,14 @@ export class MoodHistoryComponent {
     this.updateDaysInMonth();
   }
 
-  updateDaysInMonth(): void {
-    const daysInMonth = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
-    const moods = this.moodService.getMoods();
-    this.daysInMonth = Array.from({ length: daysInMonth }, (_, i) => {
-      const date = new Date(this.currentYear, this.currentMonth, i + 1).toISOString().split('T')[0];
-      const moodEntry = moods.find((m) => m.date.startsWith(date));
-      return { date: i + 1, mood: moodEntry ? moodEntry.mood : null };
-    });
-  }
+  async updateDaysInMonth(): Promise<void> {
+  const daysInMonth = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
+  const moods = await this.moodService.getMoods(); // ⬅ wacht tot data er is
+
+  this.daysInMonth = Array.from({ length: daysInMonth }, (_, i) => {
+    const date = new Date(this.currentYear, this.currentMonth, i + 1).toISOString().split('T')[0];
+    const moodEntry = moods.find((m: any) => m.date.startsWith(date));
+    return { date: i + 1, mood: moodEntry ? moodEntry.mood : null };
+  });
+}
 }
