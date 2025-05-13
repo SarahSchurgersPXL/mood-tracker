@@ -8,7 +8,7 @@ export class OfflineMoodSyncService {
     private localKey = 'pendingMood';
 
     constructor() {
-        this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
+        this.supabase = createClient(environment.supabaseUrl!, environment.supabaseKey!);
         this.trySync();
 
         // automatisch synchroniseren wanneer online

@@ -7,7 +7,7 @@ export class AuthService {
   private supabase: SupabaseClient;
 
   constructor() {
-    this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
+    this.supabase = createClient(environment.supabaseUrl!, environment.supabaseKey!);
   }
 
   async signUp(email: string, password: string) {
