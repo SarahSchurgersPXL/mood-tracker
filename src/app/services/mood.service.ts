@@ -67,7 +67,6 @@ export class MoodService {
       console.error('❌ Supabase error:', error);
       return [];
     }
-
     return data || [];
   }
 }

@@ -165,24 +165,24 @@
     justify-content: center;
     gap: 1.5rem;
     padding: 1rem;
-    background-color: #f8f9fa;
+    background-color: #eefaf7;
     border-bottom: 1px solid #ddd;
   }
 
   nav a {
     text-decoration: none;
-    color: #007bff;
+    color: #9acacc;
     font-weight: 500;
     transition: color 0.3s ease;
   }
 
   nav a.active {
     font-weight: bold;
-    color: #0056b3;
+    color: #457B9D;
   }
 
   nav a:hover {
-    color: #0056b3;
+    color: #457B9D;
   }
 
   @media screen and (max-width: 650px) {
@@ -204,7 +204,6 @@
   <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
   <a routerLink="/history" routerLinkActive="active">Mood History</a>
   <a routerLink="/stats" routerLinkActive="active">Stats</a>
-  <a routerLink="/settings" routerLinkActive="active">Settings</a>
   <span *ngIf="!isLoggedIn">
     <a routerLink="/login" routerLinkActive="active">Login</a>
   </span>
