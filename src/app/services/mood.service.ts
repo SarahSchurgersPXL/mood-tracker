@@ -12,7 +12,7 @@ export class MoodService {
       console.warn('❌ Supabase credentials missing!');
     }
 
-    this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
+    this.supabase = createClient(environment.supabaseUrl!, environment.supabaseKey!);
   }
 
   async logMood(mood: string): Promise<void> {
