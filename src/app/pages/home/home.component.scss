@@ -11,6 +11,27 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mood-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* optioneel, voor centrering */
+  gap: 1rem;            /* optioneel, ruimte tussen elementen */
+  text-align: center;
+}
+
+.mood-image2 {
+  width: 75px; // of wat je wilt
+  display: block;
+  margin: 0 auto;
+}
+
 .mood-image {
   width: 50px;
   height: 50px;
@@ -26,8 +47,3 @@ h2 {
   border-radius: 50%; /* Makes the image circular on hover */
 }
 
-div {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
