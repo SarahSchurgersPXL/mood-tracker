@@ -30,12 +30,12 @@ export class AppComponent implements OnInit {
     this.auth.onAuthStateChange((event, session) => {
       this.isLoggedIn = !!session;
 
-      // ✅ Alleen redirecten als NIET op loginpagina
+      // ✅ Only redirect if NOT on login page
       if (!session && this.currentPath !== '/login') {
         this.router.navigate(['/login']);
       }
 
-      // ✅ Automatisch naar home als net ingelogd
+      // ✅ Automatically go to home if just logged in
       if (session && this.currentPath === '/login') {
         this.router.navigate(['/']);
       }

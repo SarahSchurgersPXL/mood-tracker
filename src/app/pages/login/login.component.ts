@@ -15,7 +15,8 @@ import { CommonModule } from '@angular/common';
       <button type="submit">Sign In</button>
     </form>
     <p *ngIf="error">{{ error }}</p>
-  `
+  `,
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   email = '';

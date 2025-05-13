@@ -25,11 +25,13 @@ import { CommonModule } from '@angular/common';
       <img src="assets/moods/happy.png" alt="happy" (click)="log('happy')" class="mood-image mood-happy">
       <img src="assets/moods/very-happy.png" alt="very happy" (click)="log('very-happy')" class="mood-image mood-very-happy">
     </div>
+    <p *ngIf="logMessage" class="log-message">{{ logMessage }}</p>
   `,
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   currentMood: string | null = null;
+  logMessage: string = '';
 
   constructor(private offlineSync: OfflineMoodSyncService) { }
 
@@ -43,10 +45,6 @@ export class HomeComponent implements OnInit {
     const date = new Date().toISOString().split('T')[0];
     this.offlineSync.saveMood(date, mood);
     this.currentMood = mood;
-
-    Toastify({
-      text: `Mood logged: ${mood}`,
-      duration: 3000,
-    }).showToast();
+    this.logMessage = `Mood logged: ${mood}`;
   }
 }

@@ -6,7 +6,7 @@
 
 .month-navigation {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
 }
@@ -20,7 +20,7 @@
 .day {
   text-align: center;
   padding: 0.5rem;
-  border: 1px solid #ddd;
+  border: 1px solid #a8dadc;
   border-radius: 8px;
 }
 
@@ -34,4 +34,116 @@
   width: 32px;
   height: 32px;
   margin: 0 auto; /* Center the image */
+}
+
+button {
+  background-color: #a8dadc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); // 12 months as columns
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+.month-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 48px;
+}
+
+.month-header {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  text-align: center;
+  background: #a8dadc;
+  color: #fff;
+  border-radius: 4px 4px 0 0;
+  padding: 2px 0;
+  width: 100%;
+}
+
+.days-col {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.day-cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  gap: 0.3rem;
+  border-bottom: 1px solid #e0e0e0;
+  min-height: 22px;
+}
+
+.day-cell img + span,
+.day-cell img {
+  margin-left: 0;
+}
+
+.day-cell img ~ span {
+  display: none;
+}
+
+.year-table {
+  display: grid;
+  grid-template-columns: 32px repeat(12, 1fr);
+  overflow-x: auto;
+}
+
+.table-row {
+  display: contents;
+}
+
+.table-cell {
+  border: 1px solid #e0e0e0;
+  min-width: 28px;
+  min-height: 24px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.85rem;
+  background: #fff;
+}
+
+.day-header {
+  background: #f1faee;
+  font-weight: bold;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.month-header {
+  background: #a8dadc;
+  color: #fff;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.mood-image-inline {
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+}
+
+.year-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
