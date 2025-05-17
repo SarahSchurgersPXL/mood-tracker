@@ -58,6 +58,12 @@ import { OfflineMoodSyncService } from '../../services/offline-mood-sync.service
   `,
   styles: [
     `
+    :host {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    }
     .view-toggle {
       display: flex;
       justify-content: center;
@@ -310,22 +316,22 @@ export class StatsComponent {
 
     this.lineChartData = hasLineData
       ? {
-          labels: lineLabels,
-          datasets: [
-            {
-              data: lineData,
-              label: 'Mood Trend',
-              fill: true,
-              tension: 0.4,
-              borderColor: '#E63946',
-              backgroundColor: '#EC9A9A',
-              spanGaps: true
-            }
-          ]
-        }
+        labels: lineLabels,
+        datasets: [
+          {
+            data: lineData,
+            label: 'Mood Trend',
+            fill: true,
+            tension: 0.4,
+            borderColor: '#E63946',
+            backgroundColor: '#EC9A9A',
+            spanGaps: true
+          }
+        ]
+      }
       : {
-          labels: [],
-          datasets: [{ data: [] }]
-        };
+        labels: [],
+        datasets: [{ data: [] }]
+      };
   }
 }
