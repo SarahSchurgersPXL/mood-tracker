@@ -187,6 +187,18 @@
     color: #457B9D;
   }
 
+  .logout-btn {
+    background: none;
+    border: none;
+    color: #9acacc;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+  }
+  .logout-btn:hover {
+    color: #457B9D;
+  }
+
   @media screen and (max-width: 650px) {
     .content {
       flex-direction: column;
@@ -211,7 +223,7 @@
   </span>
 
   <span *ngIf="isLoggedIn">
-    <a href="#" (click)="logout($event)">Log out</a>
+    <button (click)="logout($event)" class="logout-btn">Log out</button>
   </span>
 </nav>
 

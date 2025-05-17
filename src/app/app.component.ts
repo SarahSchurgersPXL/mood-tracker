@@ -45,6 +45,8 @@ export class AppComponent implements OnInit {
     try {
       event.preventDefault();
       await this.auth.signOut();
+      this.isLoggedIn = false; // Update state immediately
+      this.router.navigate(['/login']); // Redirect to login page
     } catch (err: any) {
       console.error('Logout failed:', err.message);
     }
