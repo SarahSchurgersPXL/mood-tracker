@@ -9,12 +9,14 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
+  margin: 0 auto 30px auto;
 }
 
 .mood-overview {
   display: grid;
   grid-template-columns: repeat(7, 1fr); /* 7 columns for a week */
   gap: 0.2rem; // Reduced gap for less space between days
+  margin: 0 auto 30px auto;
 }
 
 .day {
