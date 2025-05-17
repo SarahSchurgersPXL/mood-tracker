@@ -7,7 +7,7 @@ import {
   ChartType,
   ChartOptions
 } from 'chart.js';
-import { MoodService } from '../../services/mood.service';
+import { OfflineMoodSyncService } from '../../services/offline-mood-sync.service';
 
 @Component({
   selector: 'app-stats',
@@ -174,7 +174,7 @@ export class StatsComponent {
     }
   };
 
-  constructor(private moodService: MoodService) {
+  constructor(private moodService: OfflineMoodSyncService) {
     this.loadStats();
   }
 

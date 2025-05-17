@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MoodService } from '../../services/mood.service';
+import { OfflineMoodSyncService } from '../../services/offline-mood-sync.service';
 
 @Component({
   selector: 'app-mood-history',
@@ -66,7 +66,7 @@ export class MoodHistoryComponent implements OnInit {
   yearMoods: (string | null)[] = [];
   yearDays: { date: number, mood: string | null }[][] = [];
 
-  constructor(private moodService: MoodService) {}
+  constructor(private moodService: OfflineMoodSyncService) {}
 
   async ngOnInit(): Promise<void> {
     await this.updateView();
