@@ -51,9 +51,26 @@
 }
 
 .text {
-  font-size: 1.2rem;
-  color: #666;
+  font-size: 1.1rem;
+  font-family: "Inter", Arial, sans-serif;
   width: 100%;
+  min-height: 90px;
+  background-color: #eefaf7;
+  color: #457B9D;
+  border: 2px solid #a8dadc;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: #a8dadc;
+    background-color: #f6fcfa;
+  }
 }
 
 .mood-options {
@@ -76,3 +93,18 @@ button {
   cursor: pointer;
 }
 
+.note-preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 30px auto; // Center horizontally and add bottom margin
+  min-width: 200px;
+  max-width: 500px;
+  width: 100%;
+  color: #457B9D;
+  background-color: #eefaf7;
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-sizing: border-box;
+}

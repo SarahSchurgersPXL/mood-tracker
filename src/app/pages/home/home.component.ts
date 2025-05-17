@@ -27,7 +27,9 @@ import { FormsModule } from '@angular/forms';
     </div>
     <div class="note-section">
       <textarea class="text" [(ngModel)]="note" rows="5" placeholder="Add notes about your day..." *ngIf="editingNote"></textarea>
-      <p class="note-preview" *ngIf="!editingNote">{{ note }}</p>
+      <div class="note-preview" *ngIf="!editingNote">
+        <p>{{ note }}</p>
+      </div>      
       <button (click)="saveNote()" *ngIf="editingNote">{{ note ? 'Save Note' : 'Add Note' }}</button>
       <button (click)="editNote()" *ngIf="!editingNote">Edit Note</button>
     </div>
@@ -50,10 +52,11 @@ export class HomeComponent implements OnInit {
   }
 
   async log(mood: string) {
+    this.currentMood = mood; // Update immediately for instant UI feedback
     const date = new Date().toISOString().split('T')[0];
     await this.offlineSync.saveMood(date, mood);
     const moodData = await this.offlineSync.getMoodByDate(date);
-    this.currentMood = moodData?.mood || null;
+    this.currentMood = moodData?.mood || mood; // fallback to selected mood if fetch fails
     this.note = moodData?.note || '';
   }
 
