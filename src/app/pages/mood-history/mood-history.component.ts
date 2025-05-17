@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OfflineMoodSyncService } from '../../services/offline-mood-sync.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mood-history',
@@ -18,7 +19,12 @@ import { OfflineMoodSyncService } from '../../services/offline-mood-sync.service
         <button *ngIf="!isCurrentMonth()" (click)="changeMonth(1)">→</button>
       </div>
       <div class="mood-overview">
-        <div *ngFor="let day of daysInMonth" class="day">
+        <div
+          *ngFor="let day of daysInMonth"
+          class="day"
+          (click)="goToDayDetail(day.date)"
+          style="cursor:pointer"
+        >
           <span>{{ day.date }}</span>
           <img *ngIf="day.mood" [src]="'assets/moods/' + day.mood + '.png'" [alt]="day.mood" class="mood-image" />
         </div>
@@ -66,7 +72,7 @@ export class MoodHistoryComponent implements OnInit {
   yearMoods: (string | null)[] = [];
   yearDays: { date: number, mood: string | null }[][] = [];
 
-  constructor(private moodService: OfflineMoodSyncService) {}
+  constructor(private moodService: OfflineMoodSyncService, private router: Router) {}
 
   async ngOnInit(): Promise<void> {
     await this.updateView();
@@ -141,5 +147,11 @@ export class MoodHistoryComponent implements OnInit {
 
   isCurrentYear(): boolean {
     return this.currentYear === new Date().getFullYear();
+  }
+
+  goToDayDetail(day: number) {
+    // Format date as yyyy-mm-dd
+    const date = new Date(this.currentYear, this.currentMonth, day).toISOString().split('T')[0];
+    this.router.navigate(['/day', date]);
   }
 }
